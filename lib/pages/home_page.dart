@@ -1,9 +1,6 @@
 import 'dart:core';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:wether_aplecerion/models/services/movies_list_vm.dart';
-
 import '../WeatherInformation/AirPressureStatus/air_pressur_status.dart';
 import '../WeatherInformation/HumidityStatus/humidity_status.dart';
 import '../WeatherInformation/VisibilityStatus/wisibilitiy_status.dart';
@@ -11,7 +8,7 @@ import '../WeatherInformation/WindStatus/wind_status.dart';
 import '../details/Search/search_page.dart';
 import '../models/rectangle_page.dart';
 import 'build_Time_page.dart';
-import 'build_weather_forecast.page.dart';
+import 'build_weather_forecast.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

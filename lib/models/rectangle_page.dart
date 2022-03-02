@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'next_days_status.dart';
-
-
 class NextDaysStatus extends StatelessWidget {
-
-
 
   const NextDaysStatus({Key? key}) : super(key: key);
 

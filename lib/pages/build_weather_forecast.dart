@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
-
-import '../models/services/movies_list_vm.dart';
 
 class buildWeatherForecast extends StatelessWidget {
   const buildWeatherForecast({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    Provider.of<MoviesListViewModel>(context, listen: false).getFromApi();
 
     return  Container(
         child: Column(
@@ -25,19 +20,6 @@ class buildWeatherForecast extends StatelessWidget {
                     height: 75,
                     width: 75,
                   ),
-                ),
-                 Padding(
-                  padding: EdgeInsets.only(top: 80,left: 40),
-                  child: Column(children: [
-
-                    Consumer<MoviesListViewModel>(builder: (context, data, child){
-                      return ListView.builder(
-                          itemCount: data.movies.length,
-                          itemBuilder: (BuildContext context, int index){
-                            return Text(data.movies[index].id.toString());
-                          });
-                    }),
-                  ]),
                 ),
               ],
             ),
