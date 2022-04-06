@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:wether_aplecerion/AppColors/app_colors.dart';
-
-class NextdaysStatus extends StatelessWidget {
+  
+class NextdaysStatus extends StatefulWidget {
   const NextdaysStatus({Key? key}) : super(key: key);
 
+  @override
+  State<NextdaysStatus> createState() => _NextdaysStatusState();
+}
+class _NextdaysStatusState extends State<NextdaysStatus> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +22,7 @@ class NextdaysStatus extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        Row( 
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
           Column(

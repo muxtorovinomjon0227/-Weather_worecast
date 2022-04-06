@@ -11,7 +11,8 @@ import 'build_Time_page.dart';
 import 'build_weather_forecast.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -54,11 +55,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 40),
-                  child: Center(child: buildTime()),
+                  child: Center(child: BuildTime()),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 150),
-                  child: Center(child: buildWeatherForecast()),
+                  child: Center(child: BuildWeatherForecast()),
                 ),
 
                 Row(mainAxisAlignment: MainAxisAlignment.spaceAround,

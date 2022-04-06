@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
-class buildTime extends StatelessWidget {
-  const buildTime({Key? key}) : super(key: key);
+class BuildTime extends StatefulWidget {
+  const BuildTime({Key? key,weather
+  }) : super(key: key);
 
+  @override
+  State<BuildTime> createState() => _BuildTimeState();
+}
+class _BuildTimeState extends State<BuildTime> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
+      children:  const [
         Text(
           "Today, Fev, 19th, 2022",
           style: TextStyle(
@@ -18,11 +23,7 @@ class buildTime extends StatelessWidget {
           style: TextStyle(
               fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        Text(
-          "Tashkent",
-          style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w300, fontSize: 20),
-        )
+        SizedBox(height: 15),
       ],
     );
   }

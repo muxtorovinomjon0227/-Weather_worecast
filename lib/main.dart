@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wether_aplecerion/pages/home_page.dart';
-
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wether_aplecerion/models/repository/news_repo.dart';
+import 'bloc/news_bloc.dart';
+import 'bloc/news_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: BlocProvider(
+        create: (_) => NewsBloc(NewRepositoryImp()),
+        child: NewsPage(),
+      ),
     );
   }
 }
+

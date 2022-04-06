@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
-class buildWeatherForecast extends StatelessWidget {
-  const buildWeatherForecast({Key? key}) : super(key: key);
+class BuildWeatherForecast extends StatefulWidget {
+  const BuildWeatherForecast({Key? key}) : super(key: key);
 
+  @override
+  State<BuildWeatherForecast> createState() => _BuildWeatherForecastState();
+}
+class _BuildWeatherForecastState extends State<BuildWeatherForecast> {
   @override
   Widget build(BuildContext context) {
 

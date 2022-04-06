@@ -5,7 +5,6 @@ class NextDaysStatus extends StatelessWidget {
 
   const NextDaysStatus({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
 
@@ -28,7 +27,6 @@ class NextDaysStatus extends StatelessWidget {
             NextdaysStatus(),
           ],
         ),
-
       ),
     );
   }
