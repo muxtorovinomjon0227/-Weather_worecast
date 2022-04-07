@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wether_aplecerion/models/api_model.dart';
 
+import '../models/repository/news_api.dart';
 import 'news_bloc.dart';
 
 class NewsPage extends StatefulWidget {
@@ -34,9 +34,9 @@ class _NewsPageState extends State<NewsPage> {
             if (state is NewsLoadedState) {
               return buildUI(state.weathers);
             }
-            if (state is NewsErrorState) {
-              return buildError(state.massage);
-            }
+            // if (state is NewsErrorState) {
+            //   return buildError(state.massage);
+            // }
 
             return Container();
           },
@@ -64,9 +64,18 @@ class _NewsPageState extends State<NewsPage> {
                 ),
                 SizedBox(width: 8),
                 Expanded(
-                  child: Text(
-                    weathers[index].id.toString(),
-                    style: TextStyle(fontSize: 20),
+                  child: Column(
+                    children: [
+                      Text(
+                        weathers[0].id.toString(),
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        weathers[index].main.toString(),
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      // IconData(weathers[index].icon!);
+                    ],
                   ),
                 ),
               ],
