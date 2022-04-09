@@ -1,6 +1,6 @@
-class News {
+class MyWeather {
   Coord? coord;
-  List<Weather>? articles;
+  List<Weather>? weather;
   String? base;
   Main? main;
   int? visibility;
@@ -13,9 +13,9 @@ class News {
   String? name;
   int? cod;
 
-  News(
+  MyWeather(
       {this.coord,
-        this.articles,
+        this.weather,
         this.base,
         this.main,
         this.visibility,
@@ -28,12 +28,12 @@ class News {
         this.name,
         this.cod});
 
-  News.fromJson(Map<String, dynamic> json) {
+  MyWeather.fromJson(Map<String, dynamic> json) {
     coord = json['coord'] != null ? new Coord.fromJson(json['coord']) : null;
     if (json['weather'] != null) {
-      articles = <Weather>[];
+      weather = <Weather>[];
       json['weather'].forEach((v) {
-        articles!.add(new Weather.fromJson(v));
+        weather!.add(new Weather.fromJson(v));
       });
     }
     base = json['base'];
@@ -55,8 +55,8 @@ class News {
     if (this.coord != null) {
       data['coord'] = this.coord!.toJson();
     }
-    if (this.articles != null) {
-      data['weather'] = this.articles!.map((v) => v.toJson()).toList();
+    if (this.weather != null) {
+      data['weather'] = this.weather!.map((v) => v.toJson()).toList();
     }
     data['base'] = this.base;
     if (this.main != null) {

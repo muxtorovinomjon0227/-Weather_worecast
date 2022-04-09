@@ -1,6 +1,7 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wether_aplecerion/models/repository/five_days_weather_status_repo.dart';
 import '../WeatherInformation/AirPressureStatus/air_pressur_status.dart';
 import '../WeatherInformation/HumidityStatus/humidity_status.dart';
 import '../WeatherInformation/VisibilityStatus/wisibilitiy_status.dart';
@@ -20,24 +21,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+
   @override
   Widget build(BuildContext context) {
-    context.read<NewsBloc>().add(FetchNewsEvent());
+    context.read<WeatherBloc>().add(FetchCurrentWeatherEvent());
+    context.read<WeatherBloc>().add(FetchNextFiveWeatherEvent());
+
 
     return Scaffold(
-        body: BlocConsumer<NewsBloc, NewsState>(
+        body: BlocConsumer<WeatherBloc, WeatherState>(
       listener: (context, state) {
         // Navigator.
       },
       builder: (context, state) {
-        if (state is NewsInitialState) {
+        if (state is WeatherInitialState) {
           return buildLoading();
         }
         if (state is NewsLoadingState) {
           return buildLoading();
         }
-        if (state is NewsLoadedState) {
+        if (state is WeatherLoadedState) {
           return buildUi(state.weathers);
+        }
+        if(state is NextFiveDaysWeatherLoadedState){
+          return buildNextDaysWeatherStatus(state.nextFiveDaysWeathers);
         }
         if (state is NewsErrorState) {
           return buildError(state.massage);
@@ -49,7 +58,7 @@ class _HomePageState extends State<HomePage> {
     ));
   }
 
-  Widget buildUi(List<Weather> weathers) {
+  Widget buildUi(MyWeather weathers) {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -66,17 +75,20 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  IconButton(
-                    icon: const Icon(Icons.search),
-                    iconSize: 40,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SearchPage()),
-                      );
-                      setState(() {});
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(top: 25,right: 10),
+                    child: IconButton(
+                      icon: const Icon(Icons.search),
+                      iconSize: 40,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SearchPage()),
+                        );
+                        setState(() {});
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -84,38 +96,37 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.only(top: 40),
                 child: Center(child: BuildTime()),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(top: 150),
-                child: Center(child: BuildWeatherForecast()),
+                child: Center(child: TemperatureCard(weathers)),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 380),
-                    child: Column(children: const [
-                      WindStatus(),
+                    child: Column(children:  [
+                      WindStatus(weathers),
                       SizedBox(
                         height: 30,
                       ),
-                      HumidityStatus()
+                      HumidityStatus(weathers)
                     ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 380),
+                    padding: EdgeInsets.only(top: 380),
                     child: Column(children:  [
-                      WisibilitiyStatus(),
+                      WisibilitiyStatus(weathers),
                       SizedBox(height: 30),
-                      AirPressurStatus(),
-                      Text(weathers[0].id.toString()),
+                      AirPressurStatus(weathers),
                     ]),
                   ),
                 ],
               ),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(top: 500),
-                child: NextDaysStatus(),
+                 child: buildNextDaysWeatherStatus(nextFiveDaysWeathers),
               ),
             ],
           ),
@@ -134,5 +145,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildLoading() {
     return const Center(child: CircularProgressIndicator());
+  }
+
+  Widget buildNextDaysWeatherStatus(FiveDaysWeatherStasus nextFiveDaysWeathers){
+    return  FiveNextDaysStatusPage(nextFiveDaysWeathers);
   }
 }

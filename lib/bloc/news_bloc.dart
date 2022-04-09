@@ -3,23 +3,34 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:wether_aplecerion/models/repository/news_repo.dart';
 
+import '../models/repository/five_days_weather_status_repo.dart';
 import '../models/repository/news_api.dart';
 part 'news_event.dart';
 part 'news_state.dart';
 
 
 
-class NewsBloc extends Bloc<NewsEvent, NewsState> {
-  NewRepository repository;
+class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
+  WeatherRepository repository;
 
-  NewsBloc(this.repository) : super(NewsInitialState()) {
-    on<FetchNewsEvent>(
+  WeatherBloc(this.repository) : super(WeatherInitialState()) {
+    on<FetchCurrentWeatherEvent>(
       (event, emit) async {
         try {
-          List<Weather> weathers = await repository.getNews();
-          emit(NewsLoadedState(weathers));
+          MyWeather weathers = await repository.getWeather();
+          emit(WeatherLoadedState(weathers));
         } catch (e) {
-          // emit(NewsErrorState(e.toString()));
+          emit(NewsErrorState(e.toString()));
+        }
+      },
+    );
+    on<FetchNextFiveWeatherEvent>(
+          (event, emit) async {
+        try {
+          FiveDaysWeatherStasus nextFiveDaysWeathers = await repository.getNextFiveDaysWeather();
+          emit(NextFiveDaysWeatherLoadedState(nextFiveDaysWeathers));
+        } catch (e) {
+          emit(NewsErrorState(e.toString()));
         }
       },
     );

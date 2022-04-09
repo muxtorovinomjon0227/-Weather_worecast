@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: BlocProvider(
-        create: (_) => NewsBloc(NewRepositoryImp()),
+        create: (_) => WeatherBloc(NewRepositoryImp()),
         child: const HomePage(),
       ),
     );

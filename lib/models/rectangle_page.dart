@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:wether_aplecerion/models/repository/five_days_weather_status_repo.dart';
 
 import 'next_days_status.dart';
-class NextDaysStatus extends StatelessWidget {
+class FiveNextDaysStatusPage extends StatefulWidget {
+  final FiveDaysWeatherStasus nextFiveDaysWeathers;
 
-  const NextDaysStatus({Key? key}) : super(key: key);
 
+   FiveNextDaysStatusPage(this.nextFiveDaysWeathers,{Key? key}) : super(key: key);
+
+  @override
+  State<FiveNextDaysStatusPage> createState() => _FiveNextDaysStatusPageState();
+}
+
+class _FiveNextDaysStatusPageState extends State<FiveNextDaysStatusPage> {
   @override
   Widget build(BuildContext context) {
 
@@ -23,8 +31,9 @@ class NextDaysStatus extends StatelessWidget {
         child:
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            NextdaysStatus(),
+          children: [
+            const NextdaysStatus(),
+            Text(widget.nextFiveDaysWeathers.city!.name.toString())
           ],
         ),
       ),

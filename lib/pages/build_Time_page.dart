@@ -5,25 +5,23 @@ import '../bloc/news_bloc.dart';
 import '../models/repository/news_api.dart';
 
 class BuildTime extends StatefulWidget {
-  const BuildTime({Key? key,weather
-  }) : super(key: key);
+  const BuildTime({Key? key, weather}) : super(key: key);
 
   @override
   State<BuildTime> createState() => _BuildTimeState();
 }
+
 class _BuildTimeState extends State<BuildTime> {
   @override
-
-
   Widget build(BuildContext context) {
-    context.read<NewsBloc>().add(FetchNewsEvent());
+    context.read<WeatherBloc>().add(FetchCurrentWeatherEvent());
 
-    return BlocConsumer<NewsBloc, NewsState>(
-      listener: (context, state ) {
+    return BlocConsumer<WeatherBloc, WeatherState>(
+      listener: (context, state) {
         // Navigator.
       },
       builder: (context, state) {
-        if (state is NewsLoadedState  ) {
+        if (state is WeatherLoadedState) {
           return builTime(state.weathers);
         }
         return Container(
@@ -33,27 +31,28 @@ class _BuildTimeState extends State<BuildTime> {
     );
   }
 
-
-
-  Widget builTime(List<Weather> weathers){
+  Widget builTime(MyWeather weathers) {
     return Column(
-      children:   [
-        Text(weathers[0].main.toString(),
+      children: [
+        const Text(
+          "2022 aprel 6",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.w400, fontSize: 14),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
-          weathers[0].description.toString(),
-          style: TextStyle(
+          weathers.sys!.country.toString(),
+          style: const TextStyle(
               fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        SizedBox(height: 15),
+        const SizedBox(height: 8),
+        Text(
+          weathers.name.toString(),
+          style: const TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w400, color: Colors.white),
+        ),
+
       ],
     );
   }
-
 }
-
-
-
