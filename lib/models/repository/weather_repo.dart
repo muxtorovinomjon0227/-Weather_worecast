@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'five_days_weather_status_repo.dart';
-import 'news_api.dart';
+import 'weather_api.dart';
 
 abstract class WeatherRepository {
   Future<MyWeather> getWeather();

@@ -6,10 +6,10 @@ import '../WeatherInformation/AirPressureStatus/air_pressur_status.dart';
 import '../WeatherInformation/HumidityStatus/humidity_status.dart';
 import '../WeatherInformation/VisibilityStatus/wisibilitiy_status.dart';
 import '../WeatherInformation/WindStatus/wind_status.dart';
-import '../bloc/news_bloc.dart';
+import '../bloc/weather_bloc.dart';
 import '../details/Search/search_page.dart';
 import '../models/rectangle_page.dart';
-import '../models/repository/news_api.dart';
+import '../models/repository/weather_api.dart';
 import 'build_Time_page.dart';
 import 'build_weather_forecast.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/news_bloc.dart';
-import '../models/repository/news_api.dart';
+import '../bloc/weather_bloc.dart';
+import '../models/repository/weather_api.dart';
 
 class BuildTime extends StatefulWidget {
   const BuildTime({Key? key, weather}) : super(key: key);

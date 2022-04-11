@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:wether_aplecerion/models/repository/news_repo.dart';
+import 'package:wether_aplecerion/models/repository/weather_repo.dart';
 
 import '../models/repository/five_days_weather_status_repo.dart';
-import '../models/repository/news_api.dart';
-part 'news_event.dart';
-part 'news_state.dart';
+import '../models/repository/weather_api.dart';
+part 'weather_event.dart';
+part 'weather_state.dart';
 
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wether_aplecerion/models/repository/news_api.dart';
+import 'package:wether_aplecerion/models/repository/weather_api.dart';
 class AirPressurStatus extends StatefulWidget {
   final MyWeather weathers;
   const AirPressurStatus(this.weathers,{Key? key}) : super(key: key);

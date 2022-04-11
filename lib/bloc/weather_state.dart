@@ -1,4 +1,4 @@
-part of 'news_bloc.dart';
+part of 'weather_bloc.dart';
 
 @immutable
 abstract class WeatherState extends Equatable{}
