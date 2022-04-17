@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../bloc/weather_bloc.dart';
 import '../models/repository/weather_api.dart';
@@ -12,6 +13,8 @@ class BuildTime extends StatefulWidget {
 }
 
 class _BuildTimeState extends State<BuildTime> {
+  String get formattedDate => DateFormat('MM/dd/yyyy, hh:mm a').format(DateTime.now());
+
   @override
   Widget build(BuildContext context) {
     context.read<WeatherBloc>().add(FetchCurrentWeatherEvent());
@@ -21,8 +24,17 @@ class _BuildTimeState extends State<BuildTime> {
         // Navigator.
       },
       builder: (context, state) {
+        if (state is WeatherInitialState) {
+          return buildLoading();
+        }
+        if (state is WeatherLoadingState) {
+          return buildLoading();
+        }
         if (state is WeatherLoadedState) {
           return builTime(state.weathers);
+        }
+        if (state is WeatherErrorState) {
+          return buildError(state.massage);
         }
         return Container(
           child: const Text("Weather App"),
@@ -34,8 +46,8 @@ class _BuildTimeState extends State<BuildTime> {
   Widget builTime(MyWeather weathers) {
     return Column(
       children: [
-        const Text(
-          "2022 aprel 6",
+         Text(
+           formattedDate,
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.w400, fontSize: 14),
         ),
@@ -55,4 +67,21 @@ class _BuildTimeState extends State<BuildTime> {
       ],
     );
   }
+  Widget buildError(String error) {
+    return Center(
+        child: Text(
+          error,
+          style: const TextStyle(fontSize: 24),
+        ));
+  }
+
+  Widget buildLoading() {
+    return const Center(child: CircularProgressIndicator());
+  }
+  void main() {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('EEE d MMM - kk:mm:ss').format(now);
+    print(formattedDate);
+  }
+
 }

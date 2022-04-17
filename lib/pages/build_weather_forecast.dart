@@ -20,7 +20,7 @@ class _TemperatureCardState extends State<TemperatureCard> {
           Stack(
             children: <Widget>[
               Image.asset("assets/images/image_ellipse.png",
-                  height: 280, width: 280),
+                  height: 280, width: 310),
               Padding(
                 padding: const EdgeInsets.only(top: 14, left: 70),
                 child: Column(
@@ -47,7 +47,4 @@ class _TemperatureCardState extends State<TemperatureCard> {
       ),
     );
   }
-// Widget buildWeatherIcon(){
-//   return
-// }
 }

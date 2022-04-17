@@ -20,7 +20,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           MyWeather weathers = await repository.getWeather();
           emit(WeatherLoadedState(weathers));
         } catch (e) {
-          emit(NewsErrorState(e.toString()));
+          emit(WeatherErrorState(e.toString()));
         }
       },
     );
@@ -30,7 +30,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           FiveDaysWeatherStasus nextFiveDaysWeathers = await repository.getNextFiveDaysWeather();
           emit(NextFiveDaysWeatherLoadedState(nextFiveDaysWeathers));
         } catch (e) {
-          emit(NewsErrorState(e.toString()));
+          emit(WeatherErrorState(e.toString()));
         }
       },
     );

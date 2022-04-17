@@ -1,53 +1,44 @@
 part of 'weather_bloc.dart';
 
 @immutable
-abstract class WeatherState extends Equatable{}
+abstract class WeatherState extends Equatable{
+}
 
 class WeatherInitialState extends WeatherState {
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => throw WeatherInitialState();
 }
 
-class NewsLoadingState extends WeatherState{
+class WeatherLoadingState extends WeatherState{
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => throw WeatherLoadingState();
 }
 
 class WeatherLoadedState extends  WeatherState{
   MyWeather weathers;
-  WeatherLoadedState(this.weathers) {
-    // TODO: implement NextWeatherLoadedState
-    throw UnimplementedError();
-  }
+  WeatherLoadedState(this.weathers);
 
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => throw WeatherLoadedState(weathers);
 }
 
 class NextFiveDaysWeatherLoadedState extends WeatherState{
   FiveDaysWeatherStasus  nextFiveDaysWeathers;
-  NextFiveDaysWeatherLoadedState(this.nextFiveDaysWeathers) {
-    // TODO: implement NextWeatherLoadedState
-    throw UnimplementedError();
+  NextFiveDaysWeatherLoadedState(this.nextFiveDaysWeathers);
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw NextFiveDaysWeatherLoadedState(nextFiveDaysWeathers);
   }
 
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-}
-
-
-
-class NewsErrorState extends WeatherState{
+class WeatherErrorState extends WeatherState{
 String massage;
-NewsErrorState(this.massage);
+WeatherErrorState(this.massage);
 
   @override
 
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => throw WeatherErrorState(massage);
 }

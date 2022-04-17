@@ -1,7 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wether_aplecerion/models/repository/five_days_weather_status_repo.dart';
 import '../WeatherInformation/AirPressureStatus/air_pressur_status.dart';
 import '../WeatherInformation/HumidityStatus/humidity_status.dart';
 import '../WeatherInformation/VisibilityStatus/wisibilitiy_status.dart';
@@ -27,8 +26,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     context.read<WeatherBloc>().add(FetchCurrentWeatherEvent());
-    context.read<WeatherBloc>().add(FetchNextFiveWeatherEvent());
-
 
     return Scaffold(
         body: BlocConsumer<WeatherBloc, WeatherState>(
@@ -39,16 +36,13 @@ class _HomePageState extends State<HomePage> {
         if (state is WeatherInitialState) {
           return buildLoading();
         }
-        if (state is NewsLoadingState) {
+        if (state is WeatherLoadingState) {
           return buildLoading();
         }
         if (state is WeatherLoadedState) {
           return buildUi(state.weathers);
         }
-        if(state is NextFiveDaysWeatherLoadedState){
-          return buildNextDaysWeatherStatus(state.nextFiveDaysWeathers);
-        }
-        if (state is NewsErrorState) {
+        if (state is WeatherErrorState) {
           return buildError(state.massage);
         }
         return Container(
@@ -126,7 +120,7 @@ class _HomePageState extends State<HomePage> {
               ),
                Padding(
                 padding: EdgeInsets.only(top: 500),
-                 child: buildNextDaysWeatherStatus(nextFiveDaysWeathers),
+                 child: FiveNextDaysStatusPage(),
               ),
             ],
           ),
@@ -147,7 +141,4 @@ class _HomePageState extends State<HomePage> {
     return const Center(child: CircularProgressIndicator());
   }
 
-  Widget buildNextDaysWeatherStatus(FiveDaysWeatherStasus nextFiveDaysWeathers){
-    return  FiveNextDaysStatusPage(nextFiveDaysWeathers);
-  }
 }
