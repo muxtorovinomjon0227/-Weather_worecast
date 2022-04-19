@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:wether_aplecerion/models/repository/five_days_weather_status_repo.dart';
 
 import '../../models/repository/next_repo.dart';
+import '../../models/repository/next_second_repo.dart';
 
 part 'next_five_weather_event.dart';
 part 'next_five_weather_state.dart';
@@ -18,7 +18,7 @@ class NextFiveWeatherBloc extends Bloc<NextFiveWeatherEvent, NextFiveWeatherStat
         FiveDaysWeatherStasus nextWeathers = await nextRepository.getNextWeather();
         emit(NextFiveWeatherLoadedState(nextWeathers));
       }catch(e){
-        emit(NextFiveWeatherErrorState(e.toString()));
+        // emit(NextFiveWeatherErrorState(e.toString()));
       }
     });
   }

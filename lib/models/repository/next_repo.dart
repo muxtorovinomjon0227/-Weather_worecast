@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'five_days_weather_status_repo.dart';
+import 'next_second_repo.dart';
 
 abstract class NextFiveRepository {
   Future<FiveDaysWeatherStasus> getNextWeather();

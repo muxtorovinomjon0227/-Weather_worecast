@@ -1,8 +1,8 @@
 class FiveDaysWeatherStasus {
   String? cod;
-  num? message;
-  num? cnt;
-  List<FiveWeather>? list;
+  int? message;
+  int? cnt;
+  List<NextWeather>? list;
   City? city;
 
   FiveDaysWeatherStasus(
@@ -13,9 +13,9 @@ class FiveDaysWeatherStasus {
     message = json['message'];
     cnt = json['cnt'];
     if (json['list'] != null) {
-      list = <FiveWeather>[];
+      list = <NextWeather>[];
       json['list'].forEach((v) {
-        list!.add( FiveWeather.fromJson(v));
+        list!.add( NextWeather.fromJson(v));
       });
     }
     city = json['city'] != null ? new City.fromJson(json['city']) : null;
@@ -36,19 +36,19 @@ class FiveDaysWeatherStasus {
   }
 }
 
-class FiveWeather {
-  num? dt;
+class NextWeather {
+  int? dt;
   Main? main;
-  List<FiveWeather>? weather;
+  List<Weather>? weather;
   Clouds? clouds;
   Wind? wind;
-  num? visibility;
-  double? pop;
+  int? visibility;
+  num? pop;
   Sys? sys;
   String? dtTxt;
   Rain? rain;
 
-  FiveWeather(
+  NextWeather(
       {this.dt,
         this.main,
         this.weather,
@@ -60,13 +60,13 @@ class FiveWeather {
         this.dtTxt,
         this.rain});
 
-  FiveWeather.fromJson(Map<String, dynamic> json) {
+  NextWeather.fromJson(Map<String, dynamic> json) {
     dt = json['dt'];
     main = json['main'] != null ? new Main.fromJson(json['main']) : null;
     if (json['weather'] != null) {
-      weather = <FiveWeather>[];
+      weather = <Weather>[];
       json['weather'].forEach((v) {
-        weather!.add(new FiveWeather.fromJson(v));
+        weather!.add(new Weather.fromJson(v));
       });
     }
     clouds =
@@ -108,15 +108,15 @@ class FiveWeather {
 }
 
 class Main {
-  double? temp;
-  double? feelsLike;
-  double? tempMin;
-  double? tempMax;
-  num? pressure;
-  num? seaLevel;
-  num? grndLevel;
-  num? humidity;
-  double? tempKf;
+  num? temp;
+  num? feelsLike;
+  num? tempMin;
+  num? tempMax;
+  int? pressure;
+  int? seaLevel;
+  int? grndLevel;
+  int? humidity;
+  num? tempKf;
 
   Main(
       {this.temp,
@@ -157,7 +157,7 @@ class Main {
 }
 
 class Weather {
-  num? id;
+  int? id;
   String? main;
   String? description;
   String? icon;
@@ -182,7 +182,7 @@ class Weather {
 }
 
 class Clouds {
-  num? all;
+  int? all;
 
   Clouds({this.all});
 
@@ -198,9 +198,9 @@ class Clouds {
 }
 
 class Wind {
-  double? speed;
-  num? deg;
-  double? gust;
+  num? speed;
+  int? deg;
+  num? gust;
 
   Wind({this.speed, this.deg, this.gust});
 
@@ -236,7 +236,7 @@ class Sys {
 }
 
 class Rain {
-  double? d3h;
+  num? d3h;
 
   Rain({this.d3h});
 
@@ -252,14 +252,14 @@ class Rain {
 }
 
 class City {
-  num? id;
+  int? id;
   String? name;
   Coord? coord;
   String? country;
-  num? population;
-  num? timezone;
-  num? sunrise;
-  num? sunset;
+  int? population;
+  int? timezone;
+  int? sunrise;
+  int? sunset;
 
   City(
       {this.id,
@@ -299,8 +299,8 @@ class City {
 }
 
 class Coord {
-  double? lat;
-  double? lon;
+  num? lat;
+  num? lon;
 
   Coord({this.lat, this.lon});
 
