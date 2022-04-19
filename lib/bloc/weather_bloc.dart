@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:wether_aplecerion/models/repository/weather_repo.dart';
-import '../models/repository/weather_api.dart';
+import '../models/weather_api.dart';
 part 'weather_event.dart';
 part 'weather_state.dart';
 

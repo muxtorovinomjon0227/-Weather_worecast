@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wether_aplecerion/models/repository/weather_api.dart';
+import 'package:wether_aplecerion/models/weather_api.dart';
 
 class TemperatureCard extends StatefulWidget {
   final MyWeather weathers;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/repository/weather_api.dart';
+import '../../models/weather_api.dart';
 
 class WindStatus extends StatefulWidget {
   final MyWeather weathers;

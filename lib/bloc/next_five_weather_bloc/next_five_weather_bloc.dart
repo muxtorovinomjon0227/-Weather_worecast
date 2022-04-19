@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../../models/repository/next_repo.dart';
-import '../../models/repository/next_second_repo.dart';
+import '../../models/next_second_repo.dart';
 
 part 'next_five_weather_event.dart';
 part 'next_five_weather_state.dart';

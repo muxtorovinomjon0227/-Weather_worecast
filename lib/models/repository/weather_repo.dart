@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'weather_api.dart';
+import '../weather_api.dart';
 
 abstract class WeatherRepository {
   Future<MyWeather> getWeather();

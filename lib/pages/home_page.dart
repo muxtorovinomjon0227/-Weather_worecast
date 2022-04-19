@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../WeatherInformation/AirPressureStatus/air_pressur_status.dart';
@@ -7,9 +8,7 @@ import '../WeatherInformation/VisibilityStatus/wisibilitiy_status.dart';
 import '../WeatherInformation/WindStatus/wind_status.dart';
 import '../bloc/weather_bloc.dart';
 import '../details/Search/search_page.dart';
-import '../models/next_days_status.dart';
-import '../models/rectangle_page.dart';
-import '../models/repository/weather_api.dart';
+import '../models/weather_api.dart';
 import 'bloc_page.dart';
 import 'build_Time_page.dart';
 import 'build_weather_forecast.dart';
@@ -80,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SearchPage()),
+                              builder: (context) => const SearchPage2()),
                         );
                         setState(() {});
                       },
@@ -121,8 +120,9 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
                Column(
-                 children:  [
-                   SizedBox(height: 400),
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children:  const [
+                   SizedBox(height:500),
                    NewsPage(),
                  ],
                ),

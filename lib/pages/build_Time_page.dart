@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../bloc/weather_bloc.dart';
-import '../models/repository/weather_api.dart';
+import '../models/weather_api.dart';
 
 class BuildTime extends StatefulWidget {
   const BuildTime({Key? key, weather}) : super(key: key);

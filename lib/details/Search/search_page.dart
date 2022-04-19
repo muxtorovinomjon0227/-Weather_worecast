@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../pages/home_page.dart';
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+class SearchPage2 extends StatelessWidget {
+  const SearchPage2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +66,10 @@ class SearchPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("Uzbekistan"),
-                    ),
+
+
+
+
                   ]),
             ),
           ],

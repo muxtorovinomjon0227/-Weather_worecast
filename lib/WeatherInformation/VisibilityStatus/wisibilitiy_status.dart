@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wether_aplecerion/models/repository/weather_api.dart';
+import 'package:wether_aplecerion/models/weather_api.dart';
 
 class WisibilitiyStatus extends StatefulWidget {
   final MyWeather weathers;
