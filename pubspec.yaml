@@ -44,6 +44,7 @@ dependencies:
   flutter_glow: ^0.2.0
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
+  flutter_native_splash: ^2.1.6
 
 
 
@@ -96,6 +97,37 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
+
+flutter_native_splash:
+  image: assets/globus.png
+  background_image: assets/splash.png
+
+  android: true
+  ios: true
+  web: true
+  android_gravity: center
+  fullscreen: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

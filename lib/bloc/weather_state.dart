@@ -25,14 +25,6 @@ class WeatherLoadedState extends  WeatherState{
   List<Object?> get props => throw WeatherLoadedState(weathers);
 }
 
-class NextFiveDaysWeatherLoadedState extends WeatherState{
-  FiveDaysWeatherStasus  nextFiveDaysWeathers;
-  NextFiveDaysWeatherLoadedState(this.nextFiveDaysWeathers);
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw NextFiveDaysWeatherLoadedState(nextFiveDaysWeathers);
-  }
-
 class WeatherErrorState extends WeatherState{
 String massage;
 WeatherErrorState(this.massage);

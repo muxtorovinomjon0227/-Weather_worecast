@@ -17,4 +17,3 @@ class FetchNextFiveWeatherEvent extends WeatherEvent{
   List<Object?> get props => throw FetchNextFiveWeatherEvent();
 
 }
-

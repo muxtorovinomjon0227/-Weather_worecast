@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wether_aplecerion/AppColors/app_colors.dart';
 import 'package:wether_aplecerion/models/repository/five_days_weather_status_repo.dart';
 
-import '../bloc/weather_bloc.dart';
-  
+import '../bloc/next_five_weather_bloc/next_five_weather_bloc.dart';
+
+
 class NextdaysStatus extends StatefulWidget {
   const NextdaysStatus({Key? key}) : super(key: key);
 
@@ -14,39 +15,67 @@ class NextdaysStatus extends StatefulWidget {
 class _NextdaysStatusState extends State<NextdaysStatus> {
   @override
   Widget build(BuildContext context) {
-    return    BlocConsumer<WeatherBloc, WeatherState>(
+    context.read<NextFiveWeatherBloc>().add(FetchNextFiveWeatherEvent());
+    return    BlocConsumer<NextFiveWeatherBloc,NextFiveWeatherState>(
        listener: (context, state) {
         // Navigator.
        },
        builder: (context, state) {
-        if (state is WeatherInitialState) {
+        if (state is NextFiveWeatherInitialState) {
           return buildLoading();
         }
-        if (state is WeatherLoadingState) {
+        if (state is NextFiveWeatherLoadingState) {
           return buildLoading();
         }
-        if (state is NextFiveDaysWeatherLoadedState) {
-          return buildNextFiveDaysWeth(state.nextFiveDaysWeathers);
+        if (state is NextFiveWeatherLoadedState) {
+          return buildUI(state.nextWeathers);
         }
-        if (state is WeatherErrorState) {
-          return buildError(state.massage);
+        if (state is NextFiveWeatherErrorState) {
+          return buildError(state.message);
         }
-        return Container(
-          child: Text("lknjn"),
-        );
+        return const Text("Nimadir xato",style: TextStyle(fontSize: 35));
       },
      );
   }
 
-  Widget buildNextFiveDaysWeth(FiveDaysWeatherStasus nextFiveDaysWeathers){
+
+  Widget buildUI(FiveDaysWeatherStasus nextWeathers) {
+    return ListView.builder(
+        itemCount: nextWeathers.list!.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+            child: Row(
+              children: [
+                Text(
+                  index.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.blue,
+                      fontSize: 20),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    nextWeathers.city!.name.toString(),
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  Widget buildNextFiveDaysWeth(FiveDaysWeatherStasus nextWeathers ){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 50),
-        const Padding(
+        Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            "The Next 5 days",
+            nextWeathers.city!.name.toString(),
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
@@ -57,7 +86,7 @@ class _NextdaysStatusState extends State<NextdaysStatus> {
               Column(
                 children: [
                   Text(
-                    nextFiveDaysWeathers.city!.id.toString(),
+                    nextWeathers.city!.id.toString(),
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
                   ),
                   const SizedBox(height: 10),

@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
   Widget buildUi(MyWeather weathers) {
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(
+          image: DecorationImage(
           image: AssetImage("assets/images/background_image.png"),
           fit: BoxFit.cover,
         ),
@@ -118,10 +118,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-               Padding(
-                padding: EdgeInsets.only(top: 500),
-                 child: FiveNextDaysStatusPage(),
-              ),
+               Column(
+                 children: const [
+                   SizedBox(height: 300),
+                   FiveNextDaysStatusPage(),
+                 ],
+               ),
             ],
           ),
         ],

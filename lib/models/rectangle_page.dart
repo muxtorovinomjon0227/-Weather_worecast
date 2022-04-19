@@ -12,16 +12,20 @@ class _FiveNextDaysStatusPageState extends State<FiveNextDaysStatusPage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding:  EdgeInsets.only(top: 10),
       child: Container(
-        decoration: const BoxDecoration(
+        decoration:  const BoxDecoration(
+          // image:  DecorationImage(
+          //   image: AssetImage("assets/images/img_1.png"),
+          //   fit: BoxFit.cover,
+          // ),
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40),
             topRight: Radius.circular(40),
           ),
         ),
-        height: 249,
+        height: 400,
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -43,7 +43,7 @@ class FiveWeather {
   Clouds? clouds;
   Wind? wind;
   num? visibility;
-  num? pop;
+  double? pop;
   Sys? sys;
   String? dtTxt;
   Rain? rain;
@@ -108,15 +108,15 @@ class FiveWeather {
 }
 
 class Main {
-  num? temp;
-  num? feelsLike;
-  num? tempMin;
-  num? tempMax;
+  double? temp;
+  double? feelsLike;
+  double? tempMin;
+  double? tempMax;
   num? pressure;
   num? seaLevel;
   num? grndLevel;
   num? humidity;
-  num? tempKf;
+  double? tempKf;
 
   Main(
       {this.temp,
@@ -198,9 +198,9 @@ class Clouds {
 }
 
 class Wind {
-  num? speed;
+  double? speed;
   num? deg;
-  num? gust;
+  double? gust;
 
   Wind({this.speed, this.deg, this.gust});
 
@@ -236,7 +236,7 @@ class Sys {
 }
 
 class Rain {
-  num? d3h;
+  double? d3h;
 
   Rain({this.d3h});
 
@@ -299,8 +299,8 @@ class City {
 }
 
 class Coord {
-  num? lat;
-  num? lon;
+  double? lat;
+  double? lon;
 
   Coord({this.lat, this.lon});
 

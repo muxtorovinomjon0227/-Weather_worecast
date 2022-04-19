@@ -39,7 +39,7 @@ class SearchPage extends StatelessWidget {
                       icon: const Icon(Icons.close),
                       iconSize: 35,
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pop(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const HomePage()),
