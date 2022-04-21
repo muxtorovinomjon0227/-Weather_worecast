@@ -51,13 +51,11 @@ class _BuildTimeState extends State<BuildTime> {
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.w400, fontSize: 14),
         ),
-        const SizedBox(height: 8),
         Text(
           weathers.sys!.country.toString(),
           style: const TextStyle(
               fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        const SizedBox(height: 8),
         Text(
           weathers.name.toString(),
           style: const TextStyle(

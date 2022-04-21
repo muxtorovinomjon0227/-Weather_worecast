@@ -5,20 +5,20 @@ import 'package:wether_aplecerion/AppColors/app_colors.dart';
 import '../bloc/next_five_weather_bloc/next_five_weather_bloc.dart';
 import '../models/next_second_repo.dart';
 
-class NewsPage extends StatefulWidget {
-  const NewsPage({Key? key}) : super(key: key);
+class FiveWeatherPage extends StatefulWidget {
+  const FiveWeatherPage({Key? key}) : super(key: key);
 
   @override
-  State<NewsPage> createState() => _NewsPageState();
+  State<FiveWeatherPage> createState() => _FiveWeatherPageState();
 }
 
-class _NewsPageState extends State<NewsPage> {
+class _FiveWeatherPageState extends State<FiveWeatherPage> {
   @override
   Widget build(BuildContext context) {
     context.read<NextFiveWeatherBloc>().add(FetchNextFiveWeatherEvent());
 
     return Container(
-      height: 230,
+      height: 250,
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -93,9 +93,16 @@ class _NewsPageState extends State<NewsPage> {
                           child: Center(
                             child: Column(
                               children: [
-                                Image.asset("assets/icons/ic_lighting.png"),
+                                Image.network(
+                                  "http://openweathermap.org/img/w/" +
+                                      nextWeathers.list![index].weather![0].icon.toString() +
+                                      ".png",
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                ),
                                 // buildWeather(),
-                                SizedBox(height: 8),
+                                SizedBox(height: 1),
                                 Text(
                                     nextWeathers.list![index].main!.temp
                                             .toString() +
@@ -103,6 +110,12 @@ class _NewsPageState extends State<NewsPage> {
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold)),
+                                Text(
+                                    nextWeathers.list![index].weather![0].main.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold)),
+
                               ],
                             ),
                           ),

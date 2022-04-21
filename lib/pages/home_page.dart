@@ -62,9 +62,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          SizedBox(),
           Stack(
             children: [
               Row(
@@ -87,19 +88,16 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 40),
-                child: Center(child: BuildTime()),
-              ),
+              Center(child: BuildTime()),
               Padding(
-                padding: EdgeInsets.only(top: 150),
+                padding: EdgeInsets.only(top: 100),
                 child: Center(child: TemperatureCard(weathers)),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 380),
+                    padding: const EdgeInsets.only(top: 330),
                     child: Column(children:  [
                       WindStatus(weathers),
                       SizedBox(
@@ -110,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 380),
+                    padding: EdgeInsets.only(top: 330),
                     child: Column(children:  [
                       WisibilitiyStatus(weathers),
                       SizedBox(height: 30),
@@ -123,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children:  const [
                    SizedBox(height:500),
-                   NewsPage(),
+                   FiveWeatherPage(),
                  ],
                ),
             ],

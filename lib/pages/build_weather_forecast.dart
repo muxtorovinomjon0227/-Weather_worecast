@@ -22,7 +22,7 @@ class _TemperatureCardState extends State<TemperatureCard> {
               Image.asset("assets/images/image_ellipse.png",
                   height: 280, width: 310),
               Padding(
-                padding: const EdgeInsets.only(top: 14, left: 70),
+                padding: const EdgeInsets.only( left:68),
                 child: Column(
                   children: [
                     Image.network(
@@ -33,11 +33,15 @@ class _TemperatureCardState extends State<TemperatureCard> {
                       height: 100,
                       fit: BoxFit.cover,
                         ),
-                    SizedBox(height: 10),
                     Text(
                       widget.weathers.main!.feelsLike.toString() + "°C",
                       style: const TextStyle(fontSize: 50, color: Colors.blue),
                     ),
+                    Text(
+                      widget.weathers.weather![0].main.toString(),
+                      style: const TextStyle(fontSize: 25, color: Colors.amberAccent),
+                    ),
+
                   ],
                 ),
               ),

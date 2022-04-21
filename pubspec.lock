@@ -307,7 +307,7 @@ packages:
       name: time_machine
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.16"
+    version: "0.9.17"
   timeago:
     dependency: "direct main"
     description:
@@ -342,14 +342,14 @@ packages:
       name: webview_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   webview_flutter_android:
     dependency: transitive
     description:
       name: webview_flutter_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.8.4"
+    version: "2.8.5"
   webview_flutter_platform_interface:
     dependency: transitive
     description:
@@ -363,7 +363,7 @@ packages:
       name: webview_flutter_wkwebview
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.7.1"
+    version: "2.7.2"
   xml:
     dependency: transitive
     description:

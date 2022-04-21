@@ -20,4 +20,3 @@ class NewRepositoryImp implements WeatherRepository {
   }
 
 }
-// Scheme not starting with alphabtic character (at character 1)
