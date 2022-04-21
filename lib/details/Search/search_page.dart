@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../pages/home_page.dart';
 
-class SearchPage2 extends StatelessWidget {
+class SearchPage2 extends StatefulWidget {
   const SearchPage2({Key? key}) : super(key: key);
 
+  @override
+  State<SearchPage2> createState() => _SearchPage2State();
+}
+
+class _SearchPage2State extends State<SearchPage2> {
+  final myController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +52,10 @@ class SearchPage2 extends StatelessWidget {
                         );
                       },
                     ),
-                    const TextField(
+                     TextField(
+                      controller: myController,
                       textAlign: TextAlign.start,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: false,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -66,10 +73,14 @@ class SearchPage2 extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-
-
-
-
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context, myController.text);
+                        },
+                        child: Text("Search"),
+                      ),
+                    ),
                   ]),
             ),
           ],

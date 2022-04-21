@@ -18,7 +18,10 @@ class NextFiveWeatherLoadedState extends NextFiveWeatherState{
   FiveDaysWeatherStasus  nextWeathers;
   NextFiveWeatherLoadedState(this.nextWeathers);
 
-  List<Object?> get props => throw UnimplementedError();
+  @override
+  // TODO: implement props
+  List<Object?> get props => [nextWeathers];
+
 
 }
 class  NextFiveWeatherErrorState extends NextFiveWeatherState{

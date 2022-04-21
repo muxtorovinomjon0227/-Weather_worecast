@@ -15,7 +15,7 @@ class NextFiveWeatherBloc extends Bloc<NextFiveWeatherEvent, NextFiveWeatherStat
   NextFiveWeatherBloc(this.nextRepository) : super(NextFiveWeatherInitialState()) {
     on<FetchNextFiveWeatherEvent>((event, emit) async {
       try{
-        FiveDaysWeatherStasus nextWeathers = await nextRepository.getNextWeather();
+        FiveDaysWeatherStasus nextWeathers = await nextRepository.getNextWeather(event.city);
         emit(NextFiveWeatherLoadedState(nextWeathers));
       }catch(e){
         // emit(NextFiveWeatherErrorState(e.toString()));

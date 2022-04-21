@@ -22,7 +22,7 @@ class WeatherLoadedState extends  WeatherState{
 
   @override
   // TODO: implement props
-  List<Object?> get props => throw WeatherLoadedState(weathers);
+  List<Object?> get props => [weathers];
 }
 
 class WeatherErrorState extends WeatherState{

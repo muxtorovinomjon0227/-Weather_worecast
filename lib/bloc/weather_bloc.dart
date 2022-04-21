@@ -14,7 +14,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   WeatherBloc(this.repository) : super(WeatherInitialState()) {
     on<FetchCurrentWeatherEvent>((event, emit) async {
         try {
-          MyWeather weathers = await repository.getWeather();
+          MyWeather weathers = await repository.getWeather(event.city);
           emit(WeatherLoadedState(weathers));
         } catch (e) {
           emit(WeatherErrorState(e.toString()));

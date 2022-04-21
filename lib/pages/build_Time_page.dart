@@ -6,7 +6,8 @@ import '../bloc/weather_bloc.dart';
 import '../models/weather_api.dart';
 
 class BuildTime extends StatefulWidget {
-  const BuildTime({Key? key, weather}) : super(key: key);
+  MyWeather weathers;
+   BuildTime( this.weathers, {Key? key, weather}) : super(key: key);
 
   @override
   State<BuildTime> createState() => _BuildTimeState();
@@ -17,30 +18,8 @@ class _BuildTimeState extends State<BuildTime> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<WeatherBloc>().add(FetchCurrentWeatherEvent());
 
-    return BlocConsumer<WeatherBloc, WeatherState>(
-      listener: (context, state) {
-        // Navigator.
-      },
-      builder: (context, state) {
-        if (state is WeatherInitialState) {
-          return buildLoading();
-        }
-        if (state is WeatherLoadingState) {
-          return buildLoading();
-        }
-        if (state is WeatherLoadedState) {
-          return builTime(state.weathers);
-        }
-        if (state is WeatherErrorState) {
-          return buildError(state.massage);
-        }
-        return Container(
-          child: const Text("Weather App"),
-        );
-      },
-    );
+    return builTime(widget.weathers);
   }
 
   Widget builTime(MyWeather weathers) {

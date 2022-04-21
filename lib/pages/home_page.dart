@@ -19,14 +19,15 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> {
-
-
+  @override
+  void initState() {
+    super.initState();
+    context.read<WeatherBloc>().add(FetchCurrentWeatherEvent("Tashkent"));
+  }
 
   @override
   Widget build(BuildContext context) {
-    context.read<WeatherBloc>().add(FetchCurrentWeatherEvent());
 
     return Scaffold(
         body: BlocConsumer<WeatherBloc, WeatherState>(
@@ -77,18 +78,13 @@ class _HomePageState extends State<HomePage> {
                       icon: const Icon(Icons.search),
                       iconSize: 40,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SearchPage2()),
-                        );
-                        setState(() {});
+                        showSearch();
                       },
                     ),
                   ),
                 ],
               ),
-              Center(child: BuildTime()),
+              Center(child: BuildTime(weathers)),
               Padding(
                 padding: EdgeInsets.only(top: 100),
                 child: Center(child: TemperatureCard(weathers)),
@@ -142,5 +138,14 @@ class _HomePageState extends State<HomePage> {
   Widget buildLoading() {
     return const Center(child: CircularProgressIndicator());
   }
+  void showSearch() async {
+    final res = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => const SearchPage2()),
+    );
+    context.read<WeatherBloc>().add(FetchCurrentWeatherEvent(res));
 
+
+  }
 }

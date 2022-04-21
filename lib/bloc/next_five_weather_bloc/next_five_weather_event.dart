@@ -4,6 +4,9 @@ part of 'next_five_weather_bloc.dart';
 abstract class NextFiveWeatherEvent extends Equatable {}
 
 class FetchNextFiveWeatherEvent extends NextFiveWeatherEvent{
+  String city;
+  FetchNextFiveWeatherEvent(this.city);
+
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();

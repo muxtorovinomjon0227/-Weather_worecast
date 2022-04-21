@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wether_aplecerion/AppColors/app_colors.dart';
 
 import '../bloc/next_five_weather_bloc/next_five_weather_bloc.dart';
+import '../details/Search/search_page.dart';
 import '../models/next_second_repo.dart';
 
 class FiveWeatherPage extends StatefulWidget {
@@ -14,8 +15,12 @@ class FiveWeatherPage extends StatefulWidget {
 
 class _FiveWeatherPageState extends State<FiveWeatherPage> {
   @override
+  void initState() {
+    super.initState();
+    context.read<NextFiveWeatherBloc>().add(FetchNextFiveWeatherEvent("Toshkent"));
+  }
+  @override
   Widget build(BuildContext context) {
-    context.read<NextFiveWeatherBloc>().add(FetchNextFiveWeatherEvent());
 
     return Container(
       height: 250,
@@ -62,7 +67,7 @@ class _FiveWeatherPageState extends State<FiveWeatherPage> {
         children: [
           Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Text("Next five days:",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+            child: Text(nextWeathers.city!.name.toString(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
           ),
           ListView.builder(
             itemCount: nextWeathers.list!.length,
@@ -178,4 +183,14 @@ class _FiveWeatherPageState extends State<FiveWeatherPage> {
           );
         });
   }
+  void showSearch() async {
+    final res = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => const SearchPage2()),
+    );
+    context.read<NextFiveWeatherBloc>().add(FetchNextFiveWeatherEvent(res));
+
+  }
+
 }
