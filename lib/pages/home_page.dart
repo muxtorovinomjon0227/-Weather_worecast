@@ -9,7 +9,7 @@ import '../WeatherInformation/WindStatus/wind_status.dart';
 import '../bloc/weather_bloc.dart';
 import '../details/Search/search_page.dart';
 import '../models/weather_api.dart';
-import 'bloc_page.dart';
+import 'five_weathet_page.dart';
 import 'build_Time_page.dart';
 import 'build_weather_forecast.dart';
 
@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
@@ -28,7 +29,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         body: BlocConsumer<WeatherBloc, WeatherState>(
       listener: (context, state) {
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           return buildError(state.massage);
         }
         return Container(
-         child: const Text("Weather App"),
+          child: const Text("Weather App"),
         );
       },
     ));
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
   Widget buildUi(MyWeather weathers) {
     return Container(
       decoration: const BoxDecoration(
-          image: DecorationImage(
+        image: DecorationImage(
           image: AssetImage("assets/images/background_image.png"),
           fit: BoxFit.cover,
         ),
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 25,right: 10),
+                    padding: const EdgeInsets.only(top: 25, right: 10),
                     child: IconButton(
                       icon: const Icon(Icons.search),
                       iconSize: 40,
@@ -94,18 +94,19 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 330),
-                    child: Column(children:  [
-                      WindStatus(weathers),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      HumidityStatus(weathers)
-                    ],
+                    child: Column(
+                      children: [
+                        WindStatus(weathers),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        HumidityStatus(weathers)
+                      ],
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 330),
-                    child: Column(children:  [
+                    child: Column(children: [
                       WisibilitiyStatus(weathers),
                       SizedBox(height: 30),
                       AirPressurStatus(weathers),
@@ -113,13 +114,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-               Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                 children:  const [
-                   SizedBox(height:500),
-                   FiveWeatherPage(),
-                 ],
-               ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  SizedBox(height: 500),
+                  FiveWeatherPage(),
+                ],
+              ),
             ],
           ),
         ],
@@ -138,14 +139,12 @@ class _HomePageState extends State<HomePage> {
   Widget buildLoading() {
     return const Center(child: CircularProgressIndicator());
   }
+
   void showSearch() async {
     final res = await Navigator.push(
       context,
-      MaterialPageRoute(
-          builder: (context) => const SearchPage2()),
+      MaterialPageRoute(builder: (context) => const SearchPage2()),
     );
     context.read<WeatherBloc>().add(FetchCurrentWeatherEvent(res));
-
-
   }
 }

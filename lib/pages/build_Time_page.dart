@@ -55,10 +55,6 @@ class _BuildTimeState extends State<BuildTime> {
   Widget buildLoading() {
     return const Center(child: CircularProgressIndicator());
   }
-  void main() {
-    DateTime now = DateTime.now();
-    String formattedDate = DateFormat('EEE d MMM - kk:mm:ss').format(now);
-    print(formattedDate);
-  }
+
 
 }
