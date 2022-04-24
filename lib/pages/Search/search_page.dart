@@ -11,12 +11,13 @@ class SearchPage2 extends StatefulWidget {
 
 class _SearchPage2State extends State<SearchPage2> {
   final myController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          color:  Color(0xff3EB489),
+          color: Color(0xff3EB489),
           // image: DecorationImage(
           //   image: AssetImage("assets/images/background_image.png"),
           //   fit: BoxFit.cover,
@@ -53,7 +54,7 @@ class _SearchPage2State extends State<SearchPage2> {
                         );
                       },
                     ),
-                     TextField(
+                    TextField(
                       controller: myController,
                       textAlign: TextAlign.start,
                       decoration: const InputDecoration(
@@ -74,7 +75,13 @@ class _SearchPage2State extends State<SearchPage2> {
                       ),
                     ),
                     SizedBox(height: 25),
-                    Text("   Type the name of the city or country",style: TextStyle(color: Color(0xff686A6C),fontSize: 20,fontWeight: FontWeight.w100),),
+                    Text(
+                      "   Type the name of the city or country",
+                      style: TextStyle(
+                          color: Color(0xff686A6C),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w100),
+                    ),
                     const SizedBox(height: 100),
                     Center(
                       child: ElevatedButton(

@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../WeatherInformation/AirPressureStatus/air_pressur_status.dart';
@@ -45,6 +46,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: Color(0xff3EB489),
         body: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 25),
           physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics(
             ),

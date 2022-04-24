@@ -25,7 +25,7 @@ class _BuildTimeState extends State<BuildTime> {
   Widget builTime(MyWeather weathers) {
     return Column(
       children: [
-        SizedBox(height: 30),
+        SizedBox(height: 20),
          Text(
            formattedDate,
           style: TextStyle(
