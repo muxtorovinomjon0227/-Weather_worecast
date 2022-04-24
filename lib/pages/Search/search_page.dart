@@ -73,8 +73,9 @@ class _SearchPage2State extends State<SearchPage2> {
                             fontSize: 14, fontWeight: FontWeight.w400),
                       ),
                     ),
-                    Text(""),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 25),
+                    Text("   Type the name of the city or country",style: TextStyle(color: Color(0xff686A6C),fontSize: 20,fontWeight: FontWeight.w100),),
+                    const SizedBox(height: 100),
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
