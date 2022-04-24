@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wether_aplecerion/AppColors/app_colors.dart';
-
 import '../bloc/next_five_weather_bloc/next_five_weather_bloc.dart';
-import '../details/Search/search_page.dart';
 import '../models/next_second_repo.dart';
 
 class FiveWeatherPage extends StatefulWidget {
@@ -14,30 +12,22 @@ class FiveWeatherPage extends StatefulWidget {
 }
 
 class _FiveWeatherPageState extends State<FiveWeatherPage> {
-
   @override
   void initState() {
     super.initState();
     context.read<NextFiveWeatherBloc>().add(FetchNextFiveWeatherEvent("Toshkent"));
   }
 
-  void main(FiveDaysWeatherStasus nextWeathers, int index) {
-    String data = nextWeathers.list![index].dtTxt.toString();
-    String getRes = data.substring(0,4);
-    print(getRes);
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 300,
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(40),
-          topRight: Radius.circular(40),
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
       ),
       child: BlocConsumer<NextFiveWeatherBloc, NextFiveWeatherState>(
@@ -64,20 +54,13 @@ class _FiveWeatherPageState extends State<FiveWeatherPage> {
     );
   }
 
-  Widget buildLoading() {
-    return const Center(child: CircularProgressIndicator());
-  }
+
 
   Widget buildUI(FiveDaysWeatherStasus nextWeathers) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, top: 5, right: 20),
       child: Stack(
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Text(nextWeathers.city!.name.toString(),
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          ),
           ListView.builder(
               itemCount: nextWeathers.list!.length,
               itemBuilder: (BuildContext context, int index) {
@@ -131,7 +114,8 @@ class _FiveWeatherPageState extends State<FiveWeatherPage> {
                                           .toString(),
                                       style: const TextStyle(
                                           fontSize: 18,
-                                          fontWeight: FontWeight.bold)),
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xffC04000))),
                                 ],
                               ),
                             ),
@@ -141,7 +125,7 @@ class _FiveWeatherPageState extends State<FiveWeatherPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                nextWeathers.list![index].dtTxt!,
+                                getData(nextWeathers, index),
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
@@ -196,6 +180,9 @@ class _FiveWeatherPageState extends State<FiveWeatherPage> {
 
   Widget buildWeather(List<Weather> nextWeathers) {
     return ListView.builder(
+      physics: BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
         itemCount: nextWeathers.length,
         itemBuilder: (BuildContext context, int index) {
           return Image.network(
@@ -208,11 +195,70 @@ class _FiveWeatherPageState extends State<FiveWeatherPage> {
         });
   }
 
-  void showSearch() async {
-    final res = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SearchPage2()),
-    );
-    context.read<NextFiveWeatherBloc>().add(FetchNextFiveWeatherEvent(res));
+  String getData(FiveDaysWeatherStasus nextWeathers, int index) {
+    String data = nextWeathers.list![index].dtTxt.toString();
+    // String yera = data.substring(0, 4);
+    String moth = gerMoth(data.substring(5,7));
+    String day = data.substring(8,10);
+    String wath = data.substring(11,16);
+    return  day +"-"+moth+" "+wath;
+  }
+
+  String gerMoth(String index) {
+    switch (index) {
+      case '01':
+        {
+          return "Junuary";
+        }
+      case '02':
+        {
+          return "Fevral";
+        }
+      case '03':
+        {
+          return "March";
+        }
+      case '04':
+        {
+          return "Aprel";
+        }
+      case '05':
+        {
+          return "May";
+        }
+      case '06':
+        {
+          return "Iyun";
+        }
+      case '07':
+        {
+          return "Iyul";
+        }
+      case '08':
+        {
+          return "Avgust";
+        }
+      case '09':
+        {
+          return "Sentyabr";
+        }
+      case '10':
+        {
+          return "Oktyabr";
+        }
+      case '11':
+        {
+          return "Noyabr";
+        }
+      case '12':
+        {
+          return "Dekabr";
+        }
+    }
+    return index;
+
+  }
+  Widget buildLoading() {
+    return const Center(child: CircularProgressIndicator());
   }
 }

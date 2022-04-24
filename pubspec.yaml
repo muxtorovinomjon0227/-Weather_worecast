@@ -73,9 +73,20 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
-    - assets/icons/
-
+    - assets/font/Manrope-Regular.ttf
+    - assets/globus.png
+    - assets/icons/ic_cloude.png
+    - assets/icons/ic_lighting.png
+    - assets/icons/ic_rain_snow.png
+    - assets/icons/ic_thunder.png
+    - assets/icons/ic_wint.png
+    - assets/icons/icon_rain.png
+    - assets/im_sky.png
+    - assets/images/background_image.png
+    - assets/images/image_ellipse.png
+    - assets/images/img_1.png
+    - assets/img.png
+    - assets/splash.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -14,9 +14,3 @@ class FetchCurrentWeatherEvent extends WeatherEvent{
 
 }
 
-class FetchNextFiveWeatherEvent extends WeatherEvent{
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw FetchNextFiveWeatherEvent();
-
-}

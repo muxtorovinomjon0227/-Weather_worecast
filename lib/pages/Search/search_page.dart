@@ -16,10 +16,11 @@ class _SearchPage2State extends State<SearchPage2> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/background_image.png"),
-            fit: BoxFit.cover,
-          ),
+          color:  Color(0xff3EB489),
+          // image: DecorationImage(
+          //   image: AssetImage("assets/images/background_image.png"),
+          //   fit: BoxFit.cover,
+          // ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -72,6 +73,7 @@ class _SearchPage2State extends State<SearchPage2> {
                             fontSize: 14, fontWeight: FontWeight.w400),
                       ),
                     ),
+                    Text(""),
                     const SizedBox(height: 20),
                     Center(
                       child: ElevatedButton(

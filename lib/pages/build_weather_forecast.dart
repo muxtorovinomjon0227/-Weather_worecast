@@ -17,6 +17,7 @@ class _TemperatureCardState extends State<TemperatureCard> {
     return Container(
       child: Column(
         children: [
+          SizedBox(height: 20),
           Stack(
             children: <Widget>[
               Image.asset("assets/images/image_ellipse.png",
