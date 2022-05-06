@@ -16,16 +16,16 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 "# Weather_worecast" 
 
-<p align="left">
+<t align="left">
   <img src="assets/screen_3.jpg" alt="SR GUI Opening window"
        width="300">
 "# Splash screen"
 
-</p>
-<p align="left">
+</t>
+<t align="left">
   <img src="assets/screen_4.jpg" alt="SR GUI Opening window"
        width="300">
-</p>
+</t>
 <p align="left">
   <img src="assets/screen_5.jpg" alt="SR GUI Opening window"
        width="300">
