@@ -22,10 +22,10 @@ samples, guidance on mobile development, and a full API reference.
 "# Splash screen"
 
 </t>
-<t align="left">
+<d align="left">
   <img src="assets/screen_4.jpg" alt="SR GUI Opening window"
        width="300">
-</t>
+</d>
 <p align="left">
   <img src="assets/screen_5.jpg" alt="SR GUI Opening window"
        width="300">
