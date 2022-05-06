@@ -17,3 +17,24 @@ samples, guidance on mobile development, and a full API reference.
 "# Weather_worecast" 
 "# WeatherForecast1" 
 "# WeatherForecast1" 
+<p align="left">
+  <img src="assets/screen_3.jpg" alt="SR GUI Opening window"
+       width="300">
+</p>
+<p align="left">
+  <img src="assets/screen_4.jpg" alt="SR GUI Opening window"
+       width="300">
+</p>
+<p align="left">
+  <img src="assets/screen_5.jpg" alt="SR GUI Opening window"
+       width="300">
+</p>
+<p align="left">
+  <img src="assets/screen_2.jpg" alt="SR GUI Opening window"
+       width="300">
+</p>
+<p align="left">
+  <img src="assets/screen_1.jpg" alt="SR GUI Opening window"
+       width="300">
+</p>
+
